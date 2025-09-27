@@ -30,6 +30,7 @@ html{
     font-family: 'Roboto', serif;
     overflow-x: hidden;
     scroll-snap-type: y proximity;
+    overscroll-behavior: none;
 
     &::-webkit-scrollbar{
         width: 8px;

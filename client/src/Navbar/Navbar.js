@@ -41,10 +41,10 @@ const Navbar = () => {
         <>
             <nav className='desktop'>
                 <div className='wrapper'>
-                    <div className='nav-section logo'>
+                    <Link to={"/"} className='nav-section logo'>
                         <Logo/>
                         <p>B90 / DIE GRÜNEN</p>
-                    </div>
+                    </Link>
 
                     <div className='nav-section links'>
                         <Link to="/">Über Mich</Link>
@@ -61,10 +61,10 @@ const Navbar = () => {
 
             <nav className='mobile'>
                 <div className='wrapper'>
-                    <div className='nav-section logo'>
+                    <Link to={"/"} className='nav-section logo'>
                         <Logo/>
                         <p>B90 / DIE GRÜNEN</p>
-                    </div>
+                    </Link>
                 </div>
 
                 <div ref={menuRef} className={`menu ${open && "open"}`}>

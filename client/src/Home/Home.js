@@ -113,15 +113,15 @@ const Home = () => {
                     <h4 className='gruene-font'>Bleibe auf dem Laufenden</h4>
 
                     <div className='profile'>
-                        <img src='./images/profile-picture-instagram.webp' alt='Profilbild Gudrun Hackl-Stoll'></img>
+                        <Link to={'https://www.instagram.com/gudrun.hackl.stoll.gruene/'} target='_blank' className='img-link'><img src='./images/profile-picture-instagram.webp' alt='Profilbild Gudrun Hackl-Stoll'></img> </Link>
                         <span/>
 
-                        <div className='name'>
+                        <Link to={'https://www.instagram.com/gudrun.hackl.stoll.gruene/'} target='_blank' className='name'>
                             <p className='real'>Gudrun Hackl-Stoll</p>
                             <p className='user'>gudrun.hackl.stoll.gruene</p>  
-                        </div>
+                        </Link>
 
-                        <a href='https://www.instagram.com/gudrun.hackl.stoll.gruene/' target='_blank'>Folgen</a>
+                        <a className='follow' href='https://www.instagram.com/gudrun.hackl.stoll.gruene/' target='_blank'>Folgen</a>
                     </div>
 
                 </div>
