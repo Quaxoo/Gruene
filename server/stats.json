@@ -1,15 +1,12 @@
 {
   "hashedIps": [
-    "3dcfe13fc9a6230d07ecf837b329e3381dbff9bb01b76a41b8ebc01df8bde15b",
-    "dd7551e1465de6c56fcb366cd2244ce7b295eeea02dfa5005d1e4d4c7c301941",
-    "289ff76b152a5689c94b6854b1f203ea91917860ee27c89a4f8366ae18869a70"
+    "3dcfe13fc9a6230d07ecf837b329e3381dbff9bb01b76a41b8ebc01df8bde15b"
   ],
   "perDay": {
-    "2025-09-27": 3
+    "2025-09-27": 1
   },
   "perCity": {
-    "Hohenkirchen-Siegertsbrunn": 1,
-    "Unknown": 2
+    "Hohenkirchen-Siegertsbrunn": 1
   },
-  "total": 3
+  "total": 1
 }

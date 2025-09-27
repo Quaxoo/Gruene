@@ -109,6 +109,7 @@ app.use((req, res, next) => {
     req.headers["x-forwarded-for"]?.split(",")[0] || req.socket.remoteAddress;
 
   const cleanIp = ip === "127.0.0.1" ? "2003:cf:af02:1500:4ac6:5977:f50c:8536" : ip;
+  console.log(cleanIp)
 
   logVisitor(cleanIp);
   next();
