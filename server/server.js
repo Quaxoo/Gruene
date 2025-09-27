@@ -28,12 +28,12 @@ app.use(
   })
 );
 
-app.use(
-  cors({
-    origin: "http://localhost:3000", // React-Frontend
-    credentials: true,               // wichtig für Cookies/Sessions
-  })
-);
+// app.use(
+//   cors({
+//     origin: "http://localhost:5000", // React-Frontend
+//     credentials: true,               // wichtig für Cookies/Sessions
+//   })
+// );
 
 
 function hashPassword(password) {
@@ -350,4 +350,4 @@ app.get("*", function(req, res) {
 });
 
 
-app.listen(5000, "0.0.0.0", () => console.log("Server läuft auf "));
+app.listen(3000, "0.0.0.0", () => console.log("Server läuft"));
