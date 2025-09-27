@@ -108,7 +108,7 @@ app.use((req, res, next) => {
   const ip =
     req.headers["x-forwarded-for"]?.split(",")[0] || req.socket.remoteAddress;
 
-  const cleanIp = ip === "127.0.0.1" ? "None" : ip;
+  const cleanIp = ip;
   console.log(cleanIp)
 
   logVisitor(cleanIp);
