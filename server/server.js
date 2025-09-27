@@ -337,11 +337,16 @@ app.delete("/uploads/:filename", AUTHENTICATED, async (req, res) => {
 
 
 
-app.get("/admin/stats", AUTHENTICATED, (req, res) => {
+app.get("/api/stats", AUTHENTICATED, (req, res) => {
   res.json(getStats());
 });
 
 
+app.use(express.static(path.join(__dirname, "../client/build")));
+
+app.get("*", function(req, res) {
+  res.sendFile(path.join(__dirname, "../client/build/index.html"));
+});
 
 
 app.listen(5000, "0.0.0.0", () => console.log("Server läuft auf "));
