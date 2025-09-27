@@ -1,0 +1,98 @@
+.termine-list{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+    min-height: 457.75px;
+
+    gap: 5rem;
+    user-select: none;
+
+    .none{
+        text-align: center;
+    }
+
+    .termin-placeholder{
+        display: flex;
+        flex-direction: column;
+        height: 457.5px;
+        width: 370px;
+        background-color: white;
+        padding: 2rem;
+        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.356);
+        cursor: wait;
+
+        .placeholder{
+            display: block;
+            border-radius: 4px;
+            animation: placeholder 2s linear infinite;
+            background-color: var(--dark);
+            height: 15px;
+            margin: 7.5px 0;
+        }
+
+        > div{
+            width: 100%;
+            display: flex;
+            gap: .6rem;
+        }
+
+        .weekday{
+            width: 75px;
+        }
+
+        .date{
+            height: 25px;
+            margin: 6.25px 0;
+            width: 132px;
+        }
+
+        .time{
+            margin-top: auto;
+            width: 114px;
+        }
+
+        hr{
+            margin-top: .5rem;
+            margin-bottom: 8px;
+            width: 100%;
+            height: 1px;
+            background-color: var(--dark-accent);
+        }
+
+        .title-1{
+            height: 31px;
+            background-color: var(--primary);
+            margin-top: 8px;
+            width: 90%;
+        }
+        .title-2{
+            height: 31px;
+            background-color: var(--primary);
+            margin-bottom: 18px;
+            width: 60%;
+        }
+
+        .paragraph{
+            height: 19px;
+            margin: 4.75px 0;
+            width: 100%;
+
+            &:last-of-type{
+                width: 70%;
+            }
+        }
+    }
+}
+
+@keyframes placeholder {
+    0%{
+        opacity: .7;
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        opacity: .7;
+    }
+}

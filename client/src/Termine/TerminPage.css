@@ -1,0 +1,395 @@
+.termin-page{
+    margin: 10rem auto;
+    width: 900px;
+
+    h1{
+        color: var(--primary);
+        font-family: GrueneTypeNeue;
+        font-size: 45px;
+        margin-bottom: 4.5rem;
+    }
+
+    .wrapper{
+        position: relative;
+        display: flex;
+        justify-content: space-between;
+        width: 900px;
+    }
+
+    .termin-content{
+        font-family: "PT Sans";
+        font-size: 19px;
+        width: 651px;
+
+        h1,h2,h3,h4,h5,h6{
+            font-family: GrueneTypeNeue !important;
+            span{
+                font-family: GrueneTypeNeue !important;
+            }
+        }
+
+        h1{
+            font-size: 45px !important;
+            span{
+                font-size: 45px !important;
+            }
+        }
+        h2{
+            font-size: 40px !important;
+            span{
+                font-size: 40px !important;
+            }
+        }
+        h3{
+            font-size: 35px !important;
+            span{
+                font-size: 35px !important;
+            }
+        }
+        h4{
+            font-size: 30px !important;
+            span{
+                font-size: 30px !important;
+            }
+        }
+        h5{
+            font-size: 25px !important;
+            span{
+                font-size: 25px !important;
+            }
+        }
+        h6{
+            font-size: 20px !important;
+            span{
+                font-size: 20px !important;
+            }
+        }
+        li{
+            margin-left: 24px;
+        }
+        a{
+            color: var(--special);
+        }
+
+        .img-wrapper{
+            border: none;
+            >div{
+                display: none;
+            }
+        }
+    }
+
+    .termin-info{
+        position: sticky;
+        top: 10rem;
+
+        flex-shrink: 0;
+        width: 225px;
+        height: fit-content;
+
+        background-color: #008939;
+        font-family: "PT Sans";
+        color: white;
+        padding: 1.5rem;
+        border-radius: 4px;
+        margin-bottom: 6px;
+
+        box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.356);
+
+        .weekday{
+            text-transform: uppercase;
+            font-size: 15px;
+            line-height: 22.5px;
+        }
+
+        .date{
+            font-size: 30px;
+            line-height: 45px;
+            font-weight: 700;
+        }
+
+        .time{
+            font-size: 15px;
+            line-height: 22.5px;
+            font-weight: 700;
+            margin-top: .5rem;
+        }
+
+        .data{
+            margin-top: 1rem;
+            font-size: 15px;
+            line-height: 22.5px;
+            font-weight: 400;
+        }
+    }
+}
+
+
+.termin-page-placeholder{
+
+    margin: 10rem auto;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+
+    .termin-content-placeholder{
+        width: 651px;
+
+        .placeholder{
+            display: block;
+            border-radius: 4px;
+            animation: placeholder 2s linear infinite;
+        }
+
+        .heading{
+            margin-bottom: 30px;
+            height: 45px;
+            width: 70%;
+            background-color: var(--primary);
+            margin-bottom: 72px;
+        }
+
+        .paragraph{
+            height: 19px;
+            width: 100%;
+            margin-bottom: 8px;
+
+            background-color: var(--dark);
+        }
+
+        .gap{
+            display: block;
+            height: 48px;
+        }
+    }
+
+    .termin-info-placeholder{
+        flex-shrink: 0;
+        width: 225px;
+        height: 230px;
+
+        border-radius: 4px;
+        background-color: #008939;
+
+        margin-top: 146px;
+
+        animation: placeholder 2s linear infinite;
+
+        &.mobile-ti{
+            display: none;
+        }
+    }
+}
+
+
+@keyframes spin {
+    from{
+        rotate: 0deg;
+    }
+    to{
+        rotate: 359deg;
+    }
+}
+
+@keyframes placeholder {
+    0%{
+        opacity: .7;
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        opacity: .7;
+    }
+}
+
+
+@media screen and (max-width: 940px) {
+    .termin-page{
+        margin: 7rem auto;
+        width: 100vw;
+        padding: 0 1rem;
+
+        h1{
+            color: var(--primary);
+            font-family: GrueneTypeNeue;
+            font-size: 45px;
+            margin-bottom: 1rem;
+        }
+
+        .wrapper{
+            justify-content: space-between;
+            flex-direction: column-reverse;
+            width: 100%;
+            gap: 1rem;
+        }
+
+        .termin-content{
+            font-family: "PT Sans";
+            font-size: 19px;
+            width: 100%;
+
+            h1,h2,h3,h4,h5,h6{
+                font-family: GrueneTypeNeue !important;
+                span{
+                    font-family: GrueneTypeNeue !important;
+                }
+            }
+
+            h1{
+                font-size: 45px !important;
+                span{
+                    font-size: 45px !important;
+                }
+            }
+            h2{
+                font-size: 40px !important;
+                span{
+                    font-size: 40px !important;
+                }
+            }
+            h3{
+                font-size: 35px !important;
+                span{
+                    font-size: 35px !important;
+                }
+            }
+            h4{
+                font-size: 30px !important;
+                span{
+                    font-size: 30px !important;
+                }
+            }
+            h5{
+                font-size: 25px !important;
+                span{
+                    font-size: 25px !important;
+                }
+            }
+            h6{
+                font-size: 20px !important;
+                span{
+                    font-size: 20px !important;
+                }
+            }
+            li{
+                margin-left: 24px;
+            }
+            a{
+                color: var(--special);
+            }
+
+            .img-wrapper{
+
+                border: none;
+                >div{
+                    display: none;
+                }
+
+                img{
+                    max-width: 100%;
+                    height: auto !important;
+                    display: block;
+                }
+            }
+        }
+
+        .termin-info{
+            position: static;
+
+            width: calc(100vw - 2rem);
+
+            background-color: #008939;
+            font-family: "PT Sans";
+            color: white;
+            padding: 1.5rem;
+            border-radius: 4px;
+            margin-bottom: 6px;
+
+            box-shadow: 0 0 16px 0 rgba(0, 0, 0, 0.356);
+
+            .weekday{
+                text-transform: uppercase;
+                font-size: 15px;
+                line-height: 22.5px;
+            }
+
+            .date{
+                font-size: 30px;
+                line-height: 45px;
+                font-weight: 700;
+            }
+
+            .time{
+                font-size: 15px;
+                line-height: 22.5px;
+                font-weight: 700;
+                margin-top: .5rem;
+            }
+
+            .data{
+                margin-top: 1rem;
+                font-size: 15px;
+                line-height: 22.5px;
+                font-weight: 400;
+            }
+        }
+    }
+
+    .termin-page-placeholder{
+        margin: 7rem auto;
+        padding: 0 1rem;
+        width: 100vw;
+
+        .termin-content-placeholder{
+            width: 100%;
+
+            .placeholder{
+                display: block;
+                border-radius: 4px;
+                animation: placeholder 2s linear infinite;
+            }
+
+            .heading{
+                margin-bottom: 30px;
+                height: 45px;
+                width: 70%;
+                background-color: var(--primary);
+                margin-bottom: 16px;
+            }
+
+            .paragraph{
+                height: 19px;
+                width: 100%;
+                margin-bottom: 8px;
+
+                background-color: var(--dark);
+            }
+
+            .gap{
+                display: block;
+                height: 48px;
+            }
+        }
+
+        .termin-info-placeholder{
+            
+            &.desktop-ti{
+                display: none;
+            }
+
+            &.mobile-ti{
+                display: block;
+                flex-shrink: 0;
+                width: calc(100% - 2rem);
+                height: 230px;
+
+                border-radius: 4px;
+                background-color: #008939;
+                margin-top: 0;
+                margin-bottom: 1rem;
+                animation: placeholder 2s linear infinite;
+            }
+        }
+    }
+}

@@ -1,0 +1,13 @@
+.beitraege-list{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    flex-direction: row;
+
+    gap: 5rem;
+    user-select: none;
+
+    .none{
+        text-align: center;
+    }
+}
