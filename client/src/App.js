@@ -32,7 +32,7 @@ function App() {
   return (
       <Router>
         <AuthProvider>
-          {/* <ScrollToTop/> */}
+          <ScrollToTop/>
 
           <Navbar/>
 
