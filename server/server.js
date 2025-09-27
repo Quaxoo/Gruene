@@ -28,13 +28,6 @@ app.use(
   })
 );
 
-// app.use(
-//   cors({
-//     origin: "http://localhost:5000", // React-Frontend
-//     credentials: true,               // wichtig für Cookies/Sessions
-//   })
-// );
-
 
 function hashPassword(password) {
   return crypto
@@ -109,7 +102,6 @@ app.use((req, res, next) => {
     req.headers["x-forwarded-for"]?.split(",")[0] || req.socket.remoteAddress;
 
   const cleanIp = ip;
-  console.log(cleanIp)
 
   logVisitor(cleanIp);
   next();
