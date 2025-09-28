@@ -5,7 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import "./Admin.css"
 import AdminTermineList from './Termine/AdminTermineList';
 import AdminBeitraegeList from "./Beitraege/AdminBeitraegeList";
-import Stats from "./Stats";
+import Stats from "./Stats/Stats";
 
 const Admin = () => {
     const [error, setError] = useState("");
@@ -29,7 +29,7 @@ const Admin = () => {
 
     return ( 
         <div className='admin-page'>
-            <Stats></Stats>
+            <Stats/>
 
             <div className="termin-head">
                 <h2 className='gruene-font'>Termine</h2>

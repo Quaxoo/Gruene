@@ -41,7 +41,10 @@ export function logVisitor(ip) {
   stats.perDay[day] = (stats.perDay[day] || 0) + 1;
 
   const geo = geoip.lookup(ip);
-  const city = geo?.city || geo?.region || geo?.country || "Unknown";
+  if(!geo || geo.country !== "DE"){
+    return;
+  }
+  const city = geo?.city || geo?.region || "Unbekannt";
   stats.perCity[city] = (stats.perCity[city] || 0) + 1;
 
   saveStats(stats);
@@ -50,5 +53,8 @@ export function logVisitor(ip) {
 export function getStats() {
   const stats = loadStats()
 
-  return {total: stats.total, perDay: stats.perDay, perCity: stats.perCity};
+  const sortedPerCity = Object.entries(stats.perCity)
+  .sort(([, a], [, b]) => b - a);
+
+  return {total: stats.total, perDay: stats.perDay, perCity: sortedPerCity};
 }

@@ -2,13 +2,12 @@ import express from "express";
 import session from "express-session";
 import crypto from "crypto";
 import dotenv from "dotenv";
-import cors from "cors"
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import multer from "multer";
-import geoip from "geoip-lite";
 import { logVisitor, getStats } from "./stats.js";
+import https from "https"
 
 dotenv.config();
 
@@ -342,4 +341,11 @@ app.get("*", function(req, res) {
 });
 
 
-app.listen(3000, "0.0.0.0", () => console.log("Server läuft"));
+const options = {
+  key: fs.readFileSync("./certificates/key.pem"),        // privater Schlüssel
+  cert: fs.readFileSync("./certificates/cert.pem"),      // Zertifikat
+};
+
+https.createServer(options, app).listen(3000, "0.0.0.0", () => {
+  console.log("HTTPS-Server läuft auf https://localhost:3000");
+});
