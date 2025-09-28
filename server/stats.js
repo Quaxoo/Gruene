@@ -54,7 +54,7 @@ export function getStats() {
   const stats = loadStats()
 
   const sortedPerCity = Object.entries(stats.perCity)
-  .sort(([, a], [, b]) => b - a);
+  .sort(([, a], [, b]) => b - a).slice(0, 5);
 
   return {total: stats.total, perDay: stats.perDay, perCity: sortedPerCity};
 }
