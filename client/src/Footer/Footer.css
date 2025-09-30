@@ -103,10 +103,53 @@ footer{
         p{
             color: var(--light);
 
-            a{
-                color: var(--special);
-                white-space: nowrap;
+            span{
+                display: inline-block;
+                width: 153px;
+                height: 19px;
+                top: 4px;
+                margin-left: 5px;
+                background-color: transparent;
+                position: relative;
+
+                a{
+                    position: absolute;
+                    color: var(--special);
+                    white-space: nowrap;
+
+                    &.hidden{
+                        visibility: hidden;
+                        transform: translateY(-24px);
+                        scale: .8;
+                        opacity: 0;
+                        transition: transform .2s ease, scale .2s ease, opacity .2s ease;
+                    }
+
+                    &.shown{
+                        transform: translateY(0);
+                        scale: 1;
+                        opacity: 1;
+                        transition: all .2s ease;
+                    }
+                }
+
+                &:hover{
+
+                    a.hidden{
+                        visibility: visible;
+                        transform: translateY(0);
+                        scale: 1;
+                        opacity: 1;
+                    }
+
+                    a.shown{
+                        transform: translateY(24px);
+                        scale: 0.7;
+                        opacity: 0;
+                    }
+                }
             }
+            
         }
 
         img{

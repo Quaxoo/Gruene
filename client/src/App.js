@@ -22,9 +22,10 @@ import Beitraege from './Beitraege/Beitraege.js';
 import BeitragPage from './Beitraege/BeitragPage.js';
 import ScrollToTop from './ScrollToTop.js';
 import CreateBeitrag from './Admin/Beitraege/CreateBeitrag.js';
+import EditBeitrag from './Admin/Beitraege/EditBeitrag.js';
 import Impressum from './Legal/Impressum.js';
 import Datenschutz from './Legal/Datenschutz.js';
-
+import SeoNoIndex from "./SEO/SeoNoIndex.js"
 
 
 function App() {
@@ -49,25 +50,38 @@ function App() {
                   <Route path="/impressum" element={<Impressum/>}/>
                   <Route path="/datenschutz" element={<Datenschutz/>}/>
 
-
-
                   <Route path="/login" element={<Login/>} />
 
                   <Route path="/admin" element={
-                    <ProtectedRoute><Admin/></ProtectedRoute>
+                    <ProtectedRoute>
+                      <SeoNoIndex title={"Admin Panel - Gudrun Hackl-Stoll"}/>
+                      <Admin/>
+                    </ProtectedRoute>
                   } />
                   <Route path="/admin/termine/erstellen" element={
-                    <ProtectedRoute><Create/></ProtectedRoute>
+                    <ProtectedRoute>
+                      <SeoNoIndex title={"Termin erstellen - Gudrun Hackl-Stoll"}/>
+                      <Create/>
+                    </ProtectedRoute>
                   } />
                   <Route path="/admin/termine/bearbeiten/:id" element={
-                    <ProtectedRoute><Edit/></ProtectedRoute>
+                    <ProtectedRoute>
+                      <SeoNoIndex title={"Termin bearbeiten - Gudrun Hackl-Stoll"}/>
+                      <Edit/>
+                    </ProtectedRoute>
                   } />
 
                   <Route path="/admin/beitraege/erstellen" element={
-                    <ProtectedRoute><CreateBeitrag/></ProtectedRoute>
+                    <ProtectedRoute>
+                      <SeoNoIndex title={"Beitrag erstellen - Gudrun Hackl-Stoll"}/>
+                      <CreateBeitrag/>
+                    </ProtectedRoute>
                   } />
                   <Route path="/admin/beitraege/bearbeiten/:id" element={
-                    <ProtectedRoute><Edit/></ProtectedRoute>
+                    <ProtectedRoute>
+                      <SeoNoIndex title={"Beitrag Bearbeiten - Gudrun Hackl-Stoll"}/>
+                      <EditBeitrag/>
+                    </ProtectedRoute>
                   } />
 
                   <Route path="*" element={<NotFound/>}/>

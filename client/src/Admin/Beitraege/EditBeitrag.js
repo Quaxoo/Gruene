@@ -1,11 +1,13 @@
 import { useState, useEffect, useRef } from "react";
 import { useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 import "./CreateBeitrag.css";
 import Editor from "../Editor/Editor";
 
 export default function EditBeitrag() {
   const editorRef = useRef(null);
+  const { id } = useParams();
 
   const [beitrag, setBeitrag] = useState(null);
   const [error, setError] = useState("");
@@ -29,7 +31,7 @@ export default function EditBeitrag() {
 
   useEffect(() => {
     loadBeitrag();
-  }, []);
+  });
 
   function handleChange(e) {
     setBeitrag({ ...beitrag, [e.target.name]: e.target.value });
@@ -84,8 +86,9 @@ export default function EditBeitrag() {
               <input
                 type="text"
                 name="title"
+                id="title"
                 placeholder="Titel*"
-                value={form.title}
+                value={beitrag.title}
                 onChange={handleChange}
                 required
               />
@@ -93,7 +96,8 @@ export default function EditBeitrag() {
               <input
                 type="date"
                 name="date"
-                value={form.date}
+                id="date"
+                value={beitrag.date}
                 onChange={handleChange}
               />
 

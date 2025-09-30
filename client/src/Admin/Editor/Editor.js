@@ -55,7 +55,7 @@ const Editor = forwardRef(({ page }, ref) => {
 		return () => {
 		editor.removeEventListener("click", clearActive);
 		};
-	}, []);
+	});
 
 	useEffect(() => {
 		if (page && editorRef.current) {
@@ -140,6 +140,7 @@ const Editor = forwardRef(({ page }, ref) => {
 
 		const img = document.createElement("img");
 		img.src = url;
+		img.alt = "Vorschaubild"
 		img.style.width = "300px"; // Startgröße
 		img.style.height = "auto";
 		img.style.display = "block";
@@ -334,6 +335,8 @@ const Editor = forwardRef(({ page }, ref) => {
   			<button title="Wiederholen" onClick={() => handleCommand("redo")}><Redo/></button>
 
 			<select
+				id="textType"
+				name="textType"
 				onChange={(e) =>
 					handleCommand("formatBlock", e.target.value)
 				}
@@ -377,6 +380,7 @@ const Editor = forwardRef(({ page }, ref) => {
 						a.href = url;
 						a.textContent = text;
 						a.target = "_blank"; // optional: Link in neuem Tab
+						a.rel = "noreferrer"
 						sel.getRangeAt(0).insertNode(a);
 					}
 					}

@@ -35,7 +35,7 @@ export default function Create() {
 
   useEffect(() => {
     checkAuthenticated();
-  }, []);
+  });
 
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -88,6 +88,7 @@ export default function Create() {
             <input
               type="text"
               name="title"
+              id="title"
               placeholder="Titel*"
               value={form.title}
               onChange={handleChange}
@@ -97,6 +98,7 @@ export default function Create() {
             <input
               type="datetime-local"
               name="startDate"
+              id="startDate"
               value={form.startDate}
               onChange={handleChange}
             />
@@ -104,6 +106,7 @@ export default function Create() {
             <input
               type="datetime-local"
               name="endDate"
+              id="endDate"
               value={form.endDate}
               onChange={handleChange}
             />
@@ -111,6 +114,7 @@ export default function Create() {
             <input
               type="text"
               name="location"
+              id="location"
               placeholder="Ort"
               value={form.location}
               onChange={handleChange}
@@ -119,6 +123,7 @@ export default function Create() {
             <input
               type="text"
               name="address"
+              id="address"
               placeholder="Adresse"
               value={form.address}
               onChange={handleChange}
@@ -127,12 +132,13 @@ export default function Create() {
             <input
               type="url"
               name="link"
+              id="link"
               placeholder="Link"
               value={form.link}
               onChange={handleChange}
             />
 
-          <button className="submit" type="submit">Speichern</button>
+          <button name="submit" className="submit" type="submit">Speichern</button>
 
         </form>
 

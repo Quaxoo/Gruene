@@ -57,7 +57,7 @@ const TermineList = ({max = -1}) => {
 
     useEffect(() => {
         loadTermine();
-    }, []);
+    });
 
     return ( 
         <div className='termine-list'>

@@ -215,10 +215,10 @@
             position: absolute;
             left: 0;
             top: 5%;
-            transform: translateX(calc((100vw/1920px) * 460px * -0.55));
+            transform: translateX(calc((100vw/1920) * 460 * -0.55));
 
-            width: calc((100vw/1920px) * 460px);
-            height: calc((100vw/1920px) * 400px);
+            width: calc((100vw/1920) * 460);
+            height: calc((100vw/1920) * 400);
             min-height: 300px;
             background-color: var(--primary);
             border-radius: 62% 38% 68% 32% / 36% 49% 51% 64%;
@@ -228,10 +228,10 @@
             position: absolute;
             right: 0;
             top: 55%;
-            transform: translateX(calc((100vw/1920px) * 460px * 0.55));
+            transform: translateX(calc((100vw/1920) * 460 * 0.55));
 
-            width: calc((100vw/1920px) * 460px);
-            height: calc((100vw/1920px) * 400px);
+            width: calc((100vw/1920) * 460);
+            height: calc((100vw/1920) * 400);
             min-height: 300px;
             background-color: var(--primary-light);
             border-radius: 62% 38% 68% 32% / 40% 49% 51% 50%;

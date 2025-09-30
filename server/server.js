@@ -94,6 +94,22 @@ const AUTHENTICATED = (req, res, next) => {
   return res.status(403).json({ message: "Nicht eingeloggt" });
 }
 
+function asyncHandler(fn) {
+  return function(req, res, next) {
+    Promise.resolve(fn(req, res, next)).catch(next);
+  };
+}
+
+function safeHandler(fn) {
+  return function(req, res, next) {
+    try {
+      fn(req, res, next);
+    } catch (err) {
+      next(err);
+    }
+  };
+}
+
 app.use((req, res, next) => {
   if (req.path.startsWith("/admin")) return next();
 
@@ -107,7 +123,7 @@ app.use((req, res, next) => {
 });
 
 
-app.post("/api/login", (req, res) => {
+app.post("/api/login", safeHandler((req, res) => {
   const { username, password } = req.body;
   if (
     username === ADMIN_USER &&
@@ -118,31 +134,31 @@ app.post("/api/login", (req, res) => {
   } else {
     res.status(401).json({ message: "Ungültige Zugangsdaten" });
   }
-});
+}));
 
-app.post("/api/logout", (req, res) => {
+app.post("/api/logout", safeHandler((req, res) => {
   req.session.destroy(() => {
     res.json({ message: "Logout erfolgreich" });
   });
-});
+}));
 
-app.get("/api/authenticated", (req, res) => {
+app.get("/api/authenticated", safeHandler((req, res) => {
   if (!req.session.authenticated) {
     return res.status(200).json({ authenticated: false });
   }else{
     return res.status(200).json({ authenticated: true });
   }
-})
+}))
 
 
 
 
-app.get("/api/termine", (req, res) => {
+app.get("/api/termine", safeHandler((req, res) => {
   const termine = loadTermine();
   res.json(termine);
-});
+}));
 
-app.post("/api/termine", AUTHENTICATED, (req, res) => {
+app.post("/api/termine", AUTHENTICATED, safeHandler((req, res) => {
   const {title, startDate, endDate, text, location, address, link } = req.body;
 
   if (!title) {
@@ -166,10 +182,10 @@ app.post("/api/termine", AUTHENTICATED, (req, res) => {
   saveTermine(termine);
 
   res.status(201).json(newTermin);
-});
+}));
 
 
-app.get("/api/termine/:id", (req, res) => {
+app.get("/api/termine/:id", safeHandler((req, res) => {
   const { id } = req.params;
   let termine = loadTermine();
   termine = termine.find(a => String(a.id) === String(id));
@@ -179,9 +195,9 @@ app.get("/api/termine/:id", (req, res) => {
   }
 
   res.json(termine);
-});
+}));
 
-app.put("/api/termine/:id", AUTHENTICATED, (req, res) => {
+app.put("/api/termine/:id", AUTHENTICATED, safeHandler((req, res) => {
   const { id } = req.params;
   const termine = loadTermine();
   const idx = termine.findIndex(a => String(a.id) === String(id));
@@ -199,9 +215,9 @@ app.put("/api/termine/:id", AUTHENTICATED, (req, res) => {
 
   saveTermine(termine);
   res.json(termine[idx]);
-});
+}));
 
-app.delete("/api/termine/:id", AUTHENTICATED, (req, res) => {
+app.delete("/api/termine/:id", AUTHENTICATED, safeHandler((req, res) => {
   const { id } = req.params;
   let termine = loadTermine();
   const before = termine.length;
@@ -214,17 +230,17 @@ app.delete("/api/termine/:id", AUTHENTICATED, (req, res) => {
 
   saveTermine(termine);
   res.json({ message: "Termin gelöscht", id });
-});
+}));
 
 
 
 
-app.get("/api/beitraege", (req, res) => {
+app.get("/api/beitraege", safeHandler((req, res) => {
   const beitraege = loadBeitraege();
   res.json(beitraege);
-});
+}));
 
-app.post("/api/beitraege", AUTHENTICATED, (req, res) => {
+app.post("/api/beitraege", AUTHENTICATED, safeHandler((req, res) => {
   const {title, date, content} = req.body;
 
   if (!title || !date) {
@@ -244,10 +260,10 @@ app.post("/api/beitraege", AUTHENTICATED, (req, res) => {
   saveBeitraege(beitraege);
 
   res.status(201).json(newBeitrag);
-});
+}));
 
 
-app.get("/api/beitraege/:id", (req, res) => {
+app.get("/api/beitraege/:id", safeHandler((req, res) => {
   const { id } = req.params;
   let beitraege = loadBeitraege();
   beitraege = beitraege.find(a => String(a.id) === String(id));
@@ -257,9 +273,9 @@ app.get("/api/beitraege/:id", (req, res) => {
   }
 
   res.json(beitraege);
-});
+}));
 
-app.put("/api/beitraege/:id", AUTHENTICATED, (req, res) => {
+app.put("/api/beitraege/:id", AUTHENTICATED, safeHandler((req, res) => {
   const { id } = req.params;
   const beitraege = loadBeitraege();
   const idx = beitraege.findIndex(a => String(a.id) === String(id));
@@ -276,9 +292,9 @@ app.put("/api/beitraege/:id", AUTHENTICATED, (req, res) => {
 
   saveBeitraege(beitraege);
   res.json(beitraege[idx]);
-});
+}));
 
-app.delete("/api/beitraege/:id", AUTHENTICATED, (req, res) => {
+app.delete("/api/beitraege/:id", AUTHENTICATED, safeHandler((req, res) => {
   const { id } = req.params;
   let beitraege = loadBeitraege();
   const before = beitraege.length;
@@ -291,29 +307,29 @@ app.delete("/api/beitraege/:id", AUTHENTICATED, (req, res) => {
 
   saveBeitraege(beitraege);
   res.json({ message: "Beitrag gelöscht", id });
-});
+}));
 
 
 
 
-app.get("/uploads", async (req, res) => {
+app.get("/uploads", asyncHandler((req, res) => {
   try {
     const files = fs.readdirSync(uploadDir);
     res.json(files);
   } catch (err) {
     res.status(500).json({ error: "Fehler beim Lesen der Dateien" });
   }
-});
+}));
 
-app.post("/uploads", AUTHENTICATED, upload.single("file"), (req, res) => {
+app.post("/uploads", AUTHENTICATED, upload.single("file"), safeHandler((req, res) => {
 
   if (!req.file) return res.status(400).json({ error: "Keine Datei hochgeladen" });
 
   res.json({ filename: req.file.filename, url: `/uploads/${req.file.filename}` });
 
-});
+}));
 
-app.delete("/uploads/:filename", AUTHENTICATED, async (req, res) => {
+app.delete("/uploads/:filename", AUTHENTICATED, asyncHandler((req, res) => {
   const filePath = path.join(uploadDir, req.params.filename);
 
   try {
@@ -324,21 +340,21 @@ app.delete("/uploads/:filename", AUTHENTICATED, async (req, res) => {
     res.status(500).json({ error: "Fehler beim Löschen der Datei" });
   }
 
-});
+}));
 
 
 
 
-app.get("/api/stats", AUTHENTICATED, (req, res) => {
+app.get("/api/stats", AUTHENTICATED, safeHandler((req, res) => {
   res.json(getStats());
-});
+}));
 
 
 app.use(express.static(path.join(__dirname, "../client/build")));
 
-app.get("*", function(req, res) {
+app.get("*", safeHandler((req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
-});
+}));
 
 
 const options = {

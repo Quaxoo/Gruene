@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import "./CreateBeitrag.css";
@@ -67,6 +67,7 @@ export default function CreateBeitrag() {
             <input
               type="text"
               name="title"
+              id="title"
               placeholder="Titel*"
               value={form.title}
               onChange={handleChange}
@@ -76,12 +77,13 @@ export default function CreateBeitrag() {
             <input
               type="date"
               name="date"
+              id="date"
               value={form.date}
               onChange={handleChange}
             />
 
 
-          <button className="submit" type="submit">Speichern</button>
+          <button name="submit" className="submit" type="submit">Speichern</button>
 
         </form>
 

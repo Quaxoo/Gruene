@@ -32,7 +32,7 @@ export default function Edit() {
 
   useEffect(() => {
     loadTermine();
-  }, []);
+  });
 
   function handleChange(e) {
     setTermin({ ...termin, [e.target.name]: e.target.value });
@@ -86,6 +86,7 @@ export default function Edit() {
                         <input
                             type="text"
                             name="title"
+                            id="title"
                             placeholder="Titel*"
                             value={termin.title}
                             onChange={handleChange}
@@ -95,6 +96,7 @@ export default function Edit() {
                         <input
                             type="datetime-local"
                             name="startDate"
+                            id="startDate"
                             value={termin.startDate}
                             onChange={handleChange}
                         />
@@ -102,6 +104,7 @@ export default function Edit() {
                         <input
                             type="datetime-local"
                             name="endDate"
+                            id="endDate"
                             value={termin.endDate}
                             onChange={handleChange}
                         />
@@ -109,6 +112,7 @@ export default function Edit() {
                         <input
                             type="text"
                             name="location"
+                            id="location"
                             placeholder="Ort"
                             value={termin.location}
                             onChange={handleChange}
@@ -117,6 +121,7 @@ export default function Edit() {
                         <input
                             type="text"
                             name="address"
+                            id="address"
                             placeholder="Adresse"
                             value={termin.address}
                             onChange={handleChange}
@@ -125,12 +130,13 @@ export default function Edit() {
                         <input
                             type="url"
                             name="link"
+                            id="link"
                             placeholder="Link"
                             value={termin.link}
                             onChange={handleChange}
                         />
 
-                      <button className="submit" type="submit">Speichern</button>
+                      <button name="submit" className="submit" type="submit">Speichern</button>
 
                   </form>
 

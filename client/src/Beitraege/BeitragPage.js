@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { useParams } from "react-router-dom";
 
 import "./BeitragPage.css"
+import SeoIndex from '../SEO/SeoIndex';
 
 
 const Beitrag = () => {
@@ -24,25 +25,61 @@ const Beitrag = () => {
 
     useEffect(() => {
         loadBeitrag();
-    }, []);
+    });
+
+    const SEO = () => {
+
+        function extractSEO(htmlString) {
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(htmlString, "text/html");
+
+            // --- Textinhalt nach der Überschrift finden ---
+            let description = doc.body.textContent || "Neuen Beitrag von Gudrun Hackl-Stoll jetzt ansehen! - Grüne Bürgermeisterkandidatin 2026 in Höhenkirchen-Siegertsbrunn";
+
+            description = description.trim();
+
+            // --- Kürzen auf max. 150 Zeichen, aber ohne Wort in der Mitte abzuschneiden ---
+            if (description.length > 150) {
+                let cutIndex = description.lastIndexOf(" ", 150);
+                if (cutIndex === -1) cutIndex = 150;
+                description = description.slice(0, cutIndex) + "…";
+            }
+
+            // --- Erstes Bild finden ---
+            const firstImg = doc.querySelector("img")?.getAttribute("src") || "/logo512.png";
+
+            return {
+                description,
+                image: firstImg,
+            };
+        }
+
+        const content = extractSEO(beitrag.content)
+
+        return (
+            <SeoIndex title={beitrag.title} description={content.description} previewImage={content.image}/>
+        )
+    }
 
     if(beitrag){
         return ( 
-            <div className='beitrag-page'>
-                <h1>{beitrag.title}</h1>
+            <>
+                <SEO/>
+                <div className='beitrag-page'>
+                    <h1>{beitrag.title}</h1>
 
-                {beitrag.date && <p className='date'>
-                        {new Date(beitrag.date).toLocaleString("de-DE", {
-                            day: "2-digit", 
-                            month: "long", 
-                            year: "numeric"
-                        })}
-                </p>} 
+                    {beitrag.date && <p className='date'>
+                            {new Date(beitrag.date).toLocaleString("de-DE", {
+                                day: "2-digit", 
+                                month: "long", 
+                                year: "numeric"
+                            })}
+                    </p>} 
 
-                <div className='beitrag-content' dangerouslySetInnerHTML={{ __html: beitrag.content }}></div>    
+                    <div className='beitrag-content' dangerouslySetInnerHTML={{ __html: beitrag.content }}></div>    
 
-            </div>
-            
+                </div>
+            </>
         );
     }else{
         return(

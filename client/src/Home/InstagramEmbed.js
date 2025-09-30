@@ -1,20 +1,15 @@
 import { useState } from "react";
-import { useEffect } from "react";
 
 export default function InstagramEmbed() {
 
   const [consent, setConsent] = useState(false)
 
-  useEffect(() => {
-    const savedConsent = localStorage.getItem("instagram-consent");
-    if (savedConsent === "true") {
-      setConsent(true);
-    }
-  }, []);
 
-  useEffect(() => {
-    if(consent){
-      const processEmbeds = () => {
+  const handleConsent = () => {
+    setConsent(true);
+    localStorage.setItem("instagram-consent", "true");
+
+    const processEmbeds = () => {
         if (window.instgrm) {
           window.instgrm.Embeds.process();
 
@@ -27,25 +22,23 @@ export default function InstagramEmbed() {
             }
           }, 500);
         }
-      };
+    };
 
-      if (!document.querySelector('script[src="https://www.instagram.com/embed.js"]')) {
-        const script = document.createElement("script");
-        script.src = "https://www.instagram.com/embed.js";
-        script.async = true;
-        script.onload = processEmbeds;
-        document.body.appendChild(script);
-      } else {
-        processEmbeds();
-      }
+    if (!document.querySelector('script[src="https://www.instagram.com/embed.js"]')) {
+      const script = document.createElement("script");
+      script.src = "https://www.instagram.com/embed.js";
+      script.async = true;
+      script.onload = processEmbeds;
+      document.body.appendChild(script);
+    } else {
+      processEmbeds();
     }
-  }, [consent]);
-
-  const handleConsent = () => {
-    setConsent(true);
-    localStorage.setItem("instagram-consent", "true");
   };
 
+  const savedConsent = localStorage.getItem("instagram-consent");
+  if (savedConsent === "true") {
+    handleConsent()
+  }
 
   if(!consent){
       return(

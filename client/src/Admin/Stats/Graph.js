@@ -6,37 +6,7 @@ const Graph = ({stats, interval, setInterval}) => {
     const [graph, setGraph] = useState(null)
     const [startDateOffset, setStartDateOffset] = useState(0)
 
-    const setGraphStats = () => {
-        if(!stats) return
-        const perDay = stats.perDay
-        setGraph(getLastXDaysData(perDay, interval))
-    }
-
-    function getLastXDaysData(obj, days) {
-        const result = [];
-        const today = new Date()
-
-        for (let i = days - 1; i >= 0; i--) {
-            const d = new Date(today);
-            d.setDate(today.getDate() - i + startDateOffset);
-
-            const key = formatDateLocal(d);
-
-            result.push([key, obj[key] ?? 0]);
-        }
-
-        return result;
-    }
-
-    function formatDateLocal(date) {
-        return date.toLocaleDateString("de-DE", { 
-            year: "numeric", 
-            month: "2-digit", 
-            day: "2-digit" 
-        }).replace(/\./g, "-").split("-").reverse().join("-");
-    }
-
-    function SmoothLineDate({ data }) {
+    const SmoothLineDate = ({ data }) => {
         const width = 968 - 2*69 + 16;
         const height = 202;
         const padding = 8;
@@ -88,10 +58,6 @@ const Graph = ({stats, interval, setInterval}) => {
 
 
     function Dates({graph}){
-        
-        useEffect(() => {
-            seven()
-        }, [graph])
 
         const seven = () => {
             const dates = []
@@ -110,7 +76,6 @@ const Graph = ({stats, interval, setInterval}) => {
                     dates.push(d[0])
                 ))
             }
-            console.log(dates)
             return dates
         }
 
@@ -127,8 +92,40 @@ const Graph = ({stats, interval, setInterval}) => {
 
 
     useEffect(() => {
+
+        const formatDateLocal = (date) => {
+            return date.toLocaleDateString("de-DE", { 
+                year: "numeric", 
+                month: "2-digit", 
+                day: "2-digit" 
+            }).replace(/\./g, "-").split("-").reverse().join("-");
+        }
+
+        const getLastXDaysData = (obj, days) => {
+            const result = [];
+            const today = new Date()
+
+            for (let i = days - 1; i >= 0; i--) {
+                const d = new Date(today);
+                d.setDate(today.getDate() - i + startDateOffset);
+
+                const key = formatDateLocal(d);
+
+                result.push([key, obj[key] ?? 0]);
+            }
+
+            return result;
+        }
+
+        const setGraphStats = () => {
+            if(!stats) return
+            const perDay = stats.perDay
+            setGraph(getLastXDaysData(perDay, interval))
+        }
+
         setGraphStats()
-    }, [startDateOffset, interval])
+
+    }, [stats, startDateOffset, interval])
 
     if(!graph){
         return <h1>Wait</h1>

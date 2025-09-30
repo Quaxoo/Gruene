@@ -50,7 +50,7 @@ const Navbar = () => {
                         <Link to="/">Über Mich</Link>
                         <Link to="/termine">Termine</Link>
                         <Link to="/aktuelles">Aktuelles</Link>
-                        <Link target='_blank' to="https://gruene-hksbr.de/">Grüne Höhenkirchen-Siegertsbrunn</Link>
+                        <Link target='_blank' rel="noreferrer" to="https://gruene-hksbr.de/">Grüne Höhenkirchen-Siegertsbrunn</Link>
                     </div>
                 </div>
 
@@ -77,7 +77,7 @@ const Navbar = () => {
                         <Link to="/" onClick={handleLinkClick}>Über Mich</Link>
                         <Link to="/termine" onClick={handleLinkClick}>Termine</Link>
                         <Link to="/aktuelles" onClick={handleLinkClick}>Aktuelles</Link>
-                        <Link target='_blank' to="https://gruene-hksbr.de/" onClick={handleLinkClick}>Grüne Höhenkirchen-Siegertsbrunn</Link>
+                        <Link target='_blank' rel="noreferrer" to="https://gruene-hksbr.de/" onClick={handleLinkClick}>Grüne Höhenkirchen-Siegertsbrunn</Link>
                         <Link to="/kontakt" onClick={handleLinkClick}>Kontakt</Link>
                     </div>
                 </div>

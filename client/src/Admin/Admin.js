@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 
@@ -8,7 +7,6 @@ import AdminBeitraegeList from "./Beitraege/AdminBeitraegeList";
 import Stats from "./Stats/Stats";
 
 const Admin = () => {
-    const [error, setError] = useState("");
     const navigate = useNavigate();
 
     async function handleLogout() {
@@ -20,10 +18,8 @@ const Admin = () => {
         if (res.ok) {
             navigate("/login")
         } else {
-            setError("Logout fehlgeschlagen");
         }
         } catch {
-        setError("Server nicht erreichbar");
         }
     }
 
