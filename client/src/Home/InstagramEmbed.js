@@ -1,27 +1,38 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function InstagramEmbed() {
 
   const [consent, setConsent] = useState(false)
 
-
-  const handleConsent = () => {
+  const giveConsent = () => {
     setConsent(true);
     localStorage.setItem("instagram-consent", "true");
+  };
+
+  useEffect(() => {
+    const savedConsent = localStorage.getItem("instagram-consent");
+    if (savedConsent === "true") {
+      setConsent(true)
+    }
+  }, [])
+
+  useEffect(() => {
+    if (!consent) return;
 
     const processEmbeds = () => {
-        if (window.instgrm) {
-          window.instgrm.Embeds.process();
+      if (window.instgrm) {
+        window.instgrm.Embeds.process();
 
-          setTimeout(() => {
-            const iframe = document.querySelector(
-              '#instagram-embed-0'
+        setTimeout(() => {
+          const iframe = document.querySelector("#instagram-embed-0");
+          if (iframe) {
+            iframe.setAttribute(
+              "title",
+              "Instagram Post von @gudrun.hacklstoll"
             );
-            if (iframe) {
-              iframe.setAttribute("title", "Instagram Post von @gudrun.hacklstoll");
-            }
-          }, 500);
-        }
+          }
+        }, 500);
+      }
     };
 
     if (!document.querySelector('script[src="https://www.instagram.com/embed.js"]')) {
@@ -33,19 +44,16 @@ export default function InstagramEmbed() {
     } else {
       processEmbeds();
     }
-  };
+  }, [consent]);
 
-  const savedConsent = localStorage.getItem("instagram-consent");
-  if (savedConsent === "true") {
-    handleConsent()
-  }
+
 
   if(!consent){
       return(
         <div className="instagram-consent">
             <div className="consent">
               <p>Um diesen Instagram-Post anzuzeigen, müssen Daten an Instagram (Meta) übertragen werden.</p>
-              <button onClick={handleConsent}>Post laden</button>
+              <button onClick={giveConsent}>Post laden</button>
             </div>
 
             <div className="head">
