@@ -119,6 +119,8 @@
                 gap: 5rem;
                 user-select: none;
 
+                font-family: "PT Sans", sans-serif;
+
                 div{
                     padding-top: 3rem;
                     width: fit-content;
@@ -126,6 +128,7 @@
 
                 p{
                     font-size: 2rem;
+                    margin-bottom: 8px;
                     width: fit-content;
                 }
 

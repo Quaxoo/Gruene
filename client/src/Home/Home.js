@@ -38,7 +38,7 @@ const Home = () => {
                             <h4>Höhenkirchen-Siegertsbrunn</h4>
                         </div>
 
-                        <div className='test gruene-font'>
+                        <div className='test'>
 
                             <div>
                                 <p>Ergotherapeutin</p>
