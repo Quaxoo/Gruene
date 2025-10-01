@@ -106,7 +106,7 @@ export default function EditBeitrag() {
 
           </form>
 
-          <Editor ref={editorRef}/>
+          <Editor ref={editorRef} page={beitrag.content}/>
 
         </div>
 
