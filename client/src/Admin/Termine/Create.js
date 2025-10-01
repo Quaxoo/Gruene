@@ -19,24 +19,6 @@ export default function Create() {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  async function checkAuthenticated() {
-    try {
-      const res = await fetch("/api/authenticated", {
-        credentials: "include",
-      });
-
-      if (res.status === 403) {
-        navigate("/login");
-      }
-    } catch {
-      setError("Server nicht erreichbar");
-    }
-  }
-
-  useEffect(() => {
-    checkAuthenticated();
-  });
-
   function handleChange(e) {
     setForm({ ...form, [e.target.name]: e.target.value });
   }

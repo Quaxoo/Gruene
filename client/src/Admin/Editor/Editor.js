@@ -55,7 +55,7 @@ const Editor = forwardRef(({ page }, ref) => {
 		return () => {
 		editor.removeEventListener("click", clearActive);
 		};
-	});
+	}, []);
 
 	useEffect(() => {
 		if (page && editorRef.current) {

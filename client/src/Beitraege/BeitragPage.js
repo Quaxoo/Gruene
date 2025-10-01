@@ -25,7 +25,7 @@ const Beitrag = () => {
 
     useEffect(() => {
         loadBeitrag();
-    });
+    }, []);
 
     const SEO = () => {
 

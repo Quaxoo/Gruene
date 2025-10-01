@@ -26,7 +26,7 @@ const Termin = () => {
 
     useEffect(() => {
         loadTermin();
-    });
+    }, []);
 
     const SEO = () => {
 

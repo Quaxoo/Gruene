@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://localhost:3000",
+  "proxy": "https://localhost:443",
   "dependencies": {
     "@ckeditor/ckeditor5-react": "^11.0.0",
     "@testing-library/dom": "^10.4.1",

@@ -32,7 +32,7 @@ export default function Edit() {
 
   useEffect(() => {
     loadTermine();
-  });
+  }, []);
 
   function handleChange(e) {
     setTermin({ ...termin, [e.target.name]: e.target.value });

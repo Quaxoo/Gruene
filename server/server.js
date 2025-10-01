@@ -362,6 +362,6 @@ const options = {
   cert: fs.readFileSync("./certificates/cert.pem"),      // Zertifikat
 };
 
-https.createServer(options, app).listen(3000, "0.0.0.0", () => {
-  console.log("HTTPS-Server läuft auf https://localhost:3000");
+https.createServer(options, app).listen(443, "0.0.0.0", () => {
+  console.log("HTTPS-Server läuft auf https://localhost:443");
 });

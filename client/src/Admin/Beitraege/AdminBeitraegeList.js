@@ -29,7 +29,7 @@ const AdminBeitraegeList = ({max = -1}) => {
 
     useEffect(() => {
         loadBeitraege();
-    });
+    }, []);
 
     return ( 
         <div className='beitraege-list'>

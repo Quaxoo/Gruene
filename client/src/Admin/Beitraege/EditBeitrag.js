@@ -31,7 +31,7 @@ export default function EditBeitrag() {
 
   useEffect(() => {
     loadBeitrag();
-  });
+  }, []);
 
   function handleChange(e) {
     setBeitrag({ ...beitrag, [e.target.name]: e.target.value });
