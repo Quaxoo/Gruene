@@ -9,7 +9,7 @@ import SeoIndex from '../SEO/SeoIndex';
 const NotFound = () => {
     return ( 
         <>
-            <SeoIndex title={"Seite nicht gefunden - Gudrun Hackl-Stoll"} description={"Seite nicht gefunden - Gudrun Hackl-Stoll - Grüne Bürgermeisterkandidatin 2026 in Höhenkirchen-Siegertsbrunn"}/>
+            <SeoIndex title={"404 Seite nicht gefunden - Gudrun Hackl-Stoll"} description={"Seite nicht gefunden - Gudrun Hackl-Stoll - Grüne Bürgermeisterkandidatin 2026 in Höhenkirchen-Siegertsbrunn"}/>
          
             <section className='not-found'>
                 <h1 className='gruene-font'>Hoppla, Seite nicht gefunden.</h1>
