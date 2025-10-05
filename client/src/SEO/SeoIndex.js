@@ -10,17 +10,9 @@ const SeoIndex = ({title, description,  pageTitle, previewImage = "/logo512.png"
     return ( 
         <Helmet>
             {/* Basis */}
-            <meta charset="utf-8" />
             <title>{pageTitle ? pageTitle : title}</title>
             <meta name="description" content={description}/>
-            <meta name="keywords" content="Kommunalwahl, Bürgermeisterkandidatin, Höhenkirchen-Siegertsbrunn, Grüne" />
             <link rel="canonical" href={url + path} />
-            <link rel="icon" href={url + "/favicon.ico"} />
-            <link rel="apple-touch-icon" href={url + "/logo192.png"} />
-            <link rel="manifest" href={url + "/manifest.json"} />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <meta name="theme-color" content="#005437" />
-
 
             {/* Open Graph (Facebook, LinkedIn etc.) */}
             <meta property="og:title" content={title} />
