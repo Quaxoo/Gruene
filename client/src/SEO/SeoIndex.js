@@ -2,7 +2,7 @@ import React from 'react'
 import { Helmet } from "react-helmet";
 import {useLocation} from "react-router-dom"
 
-const SeoIndex = ({title, description,  pageTitle, previewImage = "/logo512.png"}) => {
+const SeoIndex = ({title, description,  pageTitle, previewImage = "/images/facebook-preview.png"}) => {
 
     const path = useLocation().pathname
     const url = "https://gudrun-hackl-stoll.de"
