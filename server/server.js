@@ -417,7 +417,7 @@ app.get("/beitrag/:id", async (req, res) => {
       const cutIndex = description.lastIndexOf(" ", 150);
       description = description.slice(0, cutIndex !== -1 ? cutIndex : 150) + "…";
     }
-    const firstImg = $content("img").attr("src") || "/images/facebook-preview.png.png";
+    const firstImg = $content("img").attr("src") || "/images/facebook-preview.png";
     const image = firstImg.startsWith("http")
       ? firstImg
       : `https://gudrun-hackl-stoll.de${firstImg}`;
