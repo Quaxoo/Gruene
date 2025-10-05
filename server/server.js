@@ -9,6 +9,8 @@ import multer from "multer";
 import { logVisitor, getStats } from "./stats.js";
 import https from "https"
 
+import * as cheerio from "cheerio";
+
 dotenv.config();
 
 const app = express();
@@ -63,7 +65,6 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 
 const ADMIN_USER = process.env.ADMIN_USERNAME;
 const ADMIN_PASS_HASH = hashPassword(process.env.ADMIN_PASSWORD);
-
 
 function loadTermine() {
   if (!fs.existsSync(TERMINE_FILE)) {
@@ -350,16 +351,106 @@ app.get("/api/stats", AUTHENTICATED, safeHandler((req, res) => {
 }));
 
 
+
+
+
+app.get("/termin/:id", async (req, res) => {
+  const id = req.params.id;
+  const indexPath = path.join(__dirname, "../client/build/index.html");
+  let html = fs.readFileSync(indexPath, "utf8");
+
+  try {
+    // Daten aus deiner bestehenden API holen
+    const termin = loadTermine().find(t => String(t.id) === String(id));
+    if (!termin) {
+      return res.status(404).sendFile(indexPath);
+    }
+
+    // Beschreibung & Bild aus Text extrahieren
+    const $text = cheerio.load(termin.text || "");
+    let description = $text.text().trim();
+    if (description.length > 150) {
+      description = description.slice(0, description.indexOf(" ", 150)) + "…";
+    }
+    const firstImg =
+      $text("img").attr("src") || "/images/facebook-preview.png";
+    const image = firstImg.startsWith("http")
+      ? firstImg
+      : `https://gudrun-hackl-stoll.de${firstImg}`;
+
+    // HTML der React-App laden und Meta-Tags ersetzen
+    const $ = cheerio.load(html);
+
+    $("title").text(termin.title);
+    $('meta[name="description"]').attr("content", description);
+    $('meta[property="og:title"]').attr("content", termin.title);
+    $('meta[property="og:description"]').attr("content", description);
+    $('meta[property="og:image"]').attr("content", image);
+    $('meta[property="og:url"]').attr(
+      "content",
+      `https://gudrun-hackl-stoll.de/termin/${id}`
+    );
+
+    html = $.html();
+    res.send(html);
+  } catch (err) {
+    res.sendFile(indexPath);
+  }
+});
+
+
+app.get("/beitrag/:id", async (req, res) => {
+  const id = req.params.id;
+  const indexPath = path.join(__dirname, "../client/build/index.html");
+  let html = fs.readFileSync(indexPath, "utf8");
+
+  try {
+    const beitrag = loadBeitraege().find(b => String(b.id) === String(id));
+    if (!beitrag) {
+      return res.status(404).sendFile(indexPath);
+    }
+
+    // Beschreibung & Bild extrahieren
+    const $content = cheerio.load(beitrag.content || "");
+    let description = $content.text().trim();
+    if (description.length > 150) {
+      const cutIndex = description.lastIndexOf(" ", 150);
+      description = description.slice(0, cutIndex !== -1 ? cutIndex : 150) + "…";
+    }
+    const firstImg = $content("img").attr("src") || "/images/facebook-preview.png.png";
+    const image = firstImg.startsWith("http")
+      ? firstImg
+      : `https://gudrun-hackl-stoll.de${firstImg}`;
+
+    // HTML der React-App laden und Meta-Tags ersetzen
+    const $ = cheerio.load(html);
+    $("title").text(beitrag.title);
+    $('meta[name="description"]').attr("content", description);
+    $('meta[property="og:title"]').attr("content", beitrag.title);
+    $('meta[property="og:description"]').attr("content", description);
+    $('meta[property="og:image"]').attr("content", image);
+    $('meta[property="og:url"]').attr(
+      "content",
+      `https://gudrun-hackl-stoll.de/beitrag/${id}`
+    );
+
+    html = $.html();
+    res.send(html);
+  } catch (err) {
+    res.sendFile(indexPath);
+  }
+});
+
+
 app.use(express.static(path.join(__dirname, "../client/build")));
 
 app.get("*", safeHandler((req, res) => {
   res.sendFile(path.join(__dirname, "../client/build/index.html"));
 }));
 
-
 const options = {
-  key: fs.readFileSync("./certificates/key.pem"),        // privater Schlüssel
-  cert: fs.readFileSync("./certificates/cert.pem"),      // Zertifikat
+  key: fs.readFileSync("./certificates/key.key"),        // privater Schlüssel
+  cert: fs.readFileSync("./certificates/certificate.cer"),      // Zertifikat
 };
 
 https.createServer(options, app).listen(443, "0.0.0.0", () => {
