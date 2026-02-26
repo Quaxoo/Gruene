@@ -1,0 +1,69 @@
+.impressum{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    width: 100vw;
+    min-height: 70vh;
+    padding: 1rem;
+
+    h1{
+        color: var(--primary);
+        font-size: 3rem;
+    }
+
+    p{
+        font-size: 1.3rem;
+        padding-bottom: 1rem;
+        font-family: "PT Sans";
+    }
+
+    a{
+        color: var(--special);
+    }
+
+    > *{
+        width: calc(100vw - 2rem);
+        max-width: 600px;
+        max-height: fit-content;
+    }
+}
+
+
+.datenschutz{
+
+    max-width: 1200px;
+    width: 100vw;
+    padding: 1rem;
+    padding-left: 2rem;
+
+    margin: 10rem auto;
+
+    font-family: "PT Sans";
+    font-size: 1.1rem;
+
+    p{
+        margin-bottom: 12px;
+    }
+
+    li{
+        margin-left: 32px;
+    }
+
+    h1{
+        color: var(--primary);
+        font-size: 3rem;
+        hyphens: auto;
+    }
+
+    h2{
+        color: var(--primary);
+        margin-top: 4rem;
+    }
+
+    a{
+        color: var(--special);
+        word-break: break-all;
+    }
+}

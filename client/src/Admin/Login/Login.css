@@ -1,0 +1,42 @@
+.login{
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+
+    input{
+        width: 290px;
+        border: 2px solid var(--primary);
+        border-radius: 2rem;
+        padding: 1rem;
+        font-size: 1.3rem;
+        outline: none;
+
+        &:focus{
+            border-color: var(--special);
+        }
+    }
+
+    button{
+        width: 290px;
+        height: 60px;
+        border-radius: 2rem;
+        font-size: 1.3rem;
+
+        color: var(--light);
+        background-color: var(--primary);
+
+        &:hover{
+            background-color: var(--primary-light);
+        }
+    }
+
+    p{
+        color: red;
+        font-size: 1.2rem;
+    }
+}

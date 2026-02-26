@@ -1,0 +1,68 @@
+.admin-page{
+    padding: 10rem 8rem;
+
+    .termin-head, .beitrag-head{
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        h2{
+            font-size: 4rem;
+            color: var(--primary);
+        }
+
+        .create-link{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            font-size: 1.6rem;
+            color: var(--light);
+            background-color: var(--primary);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+
+            margin-bottom: 10px;
+
+            &:hover{
+                background-color: var(--primary-light);
+            }
+        }
+
+        .logout-button{
+            font-size: 1.2rem;
+
+            border-radius: 2rem;
+            padding: .8rem 1.4rem;
+            color: var(--light);
+            background-color: var(--dark-accent);
+
+            margin-left: auto;
+
+            &:hover{
+                background-color: var(--dark);
+            }
+        }
+    }
+
+    .termine-list{
+        justify-content: start;
+
+        .termin-preview{
+            position: relative;
+        }
+    }
+
+    .beitrag-head{
+        margin-top: 10rem;
+    }
+
+    .beitraege-list{
+        justify-content: start;
+
+        .termin-preview{
+            position: relative;
+        }
+    }
+}

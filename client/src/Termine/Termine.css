@@ -1,0 +1,41 @@
+.termine-overview{
+    min-height: 100vh;
+
+    max-width: calc(370px * 3 + 5rem * 2 + 2rem);
+    margin: 0 auto;
+    padding: 10rem 1rem;
+
+    h1{
+        color: var(--primary);
+        font-size: 3.5rem;
+        margin-bottom: 2rem;
+        text-align: center;
+        width: fit-content;
+    }
+
+    .termine-list{
+        justify-content: start;
+    }
+}
+
+@media screen and (max-width: 390px) {
+    
+    .termine-overview{
+        width: 100vw;
+        padding: 7rem 0;
+
+        h1{
+            width: 370px;
+            margin: 0 auto;
+            margin-bottom: 2rem;
+            font-size: 3rem;
+        }
+
+        .termine-list{
+            margin: 0 auto;
+            width: fit-content;
+            flex-direction: column;
+            row-gap: 2rem;
+        }
+    }
+}

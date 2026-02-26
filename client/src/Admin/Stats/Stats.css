@@ -1,0 +1,343 @@
+.stats{
+    height: fit-content;
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 2rem;
+
+    margin-bottom: 5rem;
+
+    .panel{
+        background-color: white;
+        padding: 1rem 2rem;
+        user-select: none;
+        box-shadow: 0 0 12px 0 rgba(0, 0, 0, 0.356);
+        border-radius: 2rem;
+    }
+
+    .wrapper{
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+        gap: 2rem;
+        width: fit-content;
+    }
+
+    .stats-total{
+        width: fit-content;
+        min-width: 300px;
+
+        .number{
+            font-weight: bold;
+            font-size: 2.5rem;
+            color: var(--primary);
+            width: 100%;
+            text-align: end;
+        }
+
+        .visitors{
+            font-size: 1.5rem;
+            color: var(--dark);
+            width: 100%;
+            text-align: end;
+        }
+    }
+
+    .stats-ranking{
+        width: 600px;
+
+
+        h2{
+            margin-bottom: 16px;
+        }
+
+        .entry{
+            max-width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            margin-bottom: 8px;
+
+            .number, .percent{
+                flex-shrink: 0;
+                z-index: 1;
+                font-size: 1.2rem;
+                height: fit-content;
+                margin-left: 1rem;
+            }
+            .number{
+                margin-right: 2rem;
+            }
+            .percent{
+                text-align: end;
+                min-width: 52px;
+            }
+
+            .left{
+                width: 100%;
+                position: relative;
+            }
+
+            .city{
+                padding: 6px 4px;
+                margin-left: 4px;
+                z-index: 1;
+                font-size: 1.2rem;
+            }
+
+            .bar{
+                position: absolute !important;
+                top: 0;
+                max-width: 100%;
+                height: 100%;
+                background-color: var(--primary-light);
+                opacity: .3;
+                border-radius: 4px 4px 4px 4px;
+            }
+
+            &:first-of-type{
+                .city, .number{
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .graph{
+        position: relative;
+        width: 1032px;
+        padding-top: 8rem;
+
+        .arrow{
+            position: absolute;
+            bottom: 24px;
+
+            width: 32px;
+            height: 32px;
+            font-size: 1.5rem;
+            border-radius: 50%;
+            background-color: transparent;
+
+            &.forward{
+                left: 72px;
+            }
+        }
+
+        .interval{
+            position: absolute;
+            top: 44px;
+            right: 32px;
+
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+
+            cursor: pointer;
+
+            > div{
+                cursor: pointer;
+                min-width: fit-content;
+            }
+
+            .active{
+                color: var(--primary);
+            }
+        }
+
+        .visitors{
+            position: absolute;
+            top: 32px;
+            min-width: 120px;
+            text-align: end;
+
+            h2{
+                color: var(--primary);
+                font-size: 2rem;
+            }
+
+            p{
+                display: inline-flex;
+                align-items: center;
+                gap: 8px;
+                opacity: .9;
+
+                span{
+                    display: block;
+                    width: 12px;
+                    height: 6px;
+                    background-color: var(--primary-light);
+                    border-radius: 3px;
+                }
+            }
+        }
+
+        .time-period{
+            position: absolute;
+            width: 250px;
+            top: 80px;
+            right: 32px;
+
+            display: inline-flex;
+            justify-content: flex-end;
+            flex-wrap: wrap;
+            gap: .5rem;
+            opacity: .5;
+
+            p{
+                &:last-of-type{
+                    text-align: end;
+                    width: 100%;
+                }
+            }
+        }
+
+        .diagram{
+            position: relative !important;
+            width: 100%;
+            height: 70%;
+            margin-top: auto;
+
+            svg{
+                stroke: var(--primary);
+                z-index: 1;
+                position: absolute;
+                left: calc(69px - 8px);
+            }
+
+            .dots{
+                width: 838px;
+                height: 202px;
+                position: absolute;
+                top: -3px;
+                left: 61px;
+                z-index: 10;
+
+                .dot{
+                    position: absolute;
+                    height: 8px;
+                    width: 8px;
+                    border-radius: 50%;
+                    background-color: var(--primary);
+                }
+            }
+
+            .hrs{
+                position: absolute;
+                width: 100%;
+                height: 100%;
+
+                opacity: .9;
+
+                display: flex;
+                flex-direction: column;
+                justify-content: space-between;
+            }
+
+            .hover-points{
+                position: absolute !important;
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                display: flex !important;
+
+                &.monthly{
+                    padding: 0 56px;
+                }
+
+                .hover-point{
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    flex-basis: 100%;
+                    height: 100%;
+                    overflow: visible;
+
+                    .line{
+                        display: block;
+                        opacity: 0;
+                        min-height: 100% !important;
+                        width: 2px;
+                        border-left: 2px dashed var(--dark);
+                    }
+
+                    .tooltip{
+                        position: absolute !important;
+                        z-index: 3;
+                        width: 200px;
+                        top: 70%;
+                        left: 70%;
+
+                        background-color: rgb(233, 233, 233);
+                        border: 1px solid lightgray;
+                        border-radius: 4px;
+                        padding: .5rem 1rem;
+
+                        opacity: 0;
+
+                        .stat{
+                            position: relative;
+                            margin-top: 1rem;
+                            display: flex;
+                            width: 100%;
+                            justify-content: space-between;
+
+                            .user{
+                                margin-left: 20px;
+                                font-style: italic;
+                                opacity: .9;
+                            }
+
+                            .number{
+                                font-weight: bold;
+                            }
+
+                            &::before{
+                                content: "";
+
+                                position: absolute;
+                                left: 0;
+                                top: 50%;
+                                transform: translateY(-50%);
+
+                                background-color: var(--primary-light);
+                                height: 6px;
+                                width: 12px;
+                                border-radius: 3px;
+                            }
+
+                            p{
+                                white-space: nowrap;
+                            }
+                        }
+
+                    }
+
+                    &:hover{
+                        .line{
+                            opacity: .8;
+                        }
+
+                        .tooltip{
+                            opacity: 1;
+                        }
+                    }
+                }
+            }
+        }
+
+        .dates{
+            margin-top: 16px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            font-style: italic;
+            opacity: .7;
+            font-size: .9rem;
+
+            p{
+                width: 100%;
+                text-align: center;
+            }
+        }
+    }
+}

@@ -1,0 +1,8 @@
+{
+  "ignore": [
+    "./termine.json",
+    "./beitraege.json",
+    "./stats.json",
+    "./uploads"
+  ]
+}

@@ -1,0 +1,199 @@
+.beitrag-page{
+    margin: 10rem auto;
+    max-width: 932px;
+    padding: 0 1rem;
+
+    h1{
+        color: var(--primary);
+        font-family: GrueneTypeNeue;
+        font-size: 45px;
+    }
+
+    .date{
+        color: var(--primary);
+        font-family: "PT Sans";
+        font-size: 19px;
+        line-height: 28.5px;
+        margin-bottom: 4.5rem;
+    }
+
+    .beitrag-content{
+        font-family: "PT Sans";
+        font-size: 19px;
+
+        h1,h2,h3,h4,h5,h6{
+            font-family: GrueneTypeNeue !important;
+            span{
+                font-family: GrueneTypeNeue !important;
+            }
+        }
+
+        h1{
+            font-size: 45px !important;
+            span{
+                font-size: 45px !important;
+            }
+        }
+        h2{
+            font-size: 40px !important;
+            span{
+                font-size: 40px !important;
+            }
+        }
+        h3{
+            font-size: 35px !important;
+            span{
+                font-size: 35px !important;
+            }
+        }
+        h4{
+            font-size: 30px !important;
+            span{
+                font-size: 30px !important;
+            }
+        }
+        h5{
+            font-size: 25px !important;
+            span{
+                font-size: 25px !important;
+            }
+        }
+        h6{
+            font-size: 20px !important;
+            span{
+                font-size: 20px !important;
+            }
+        }
+        li{
+            margin-left: 24px;
+        }
+        a{
+            color: var(--special);
+        }
+
+        .img-wrapper{
+            border: none;
+            >div{
+                display: none;
+            }
+
+            img{
+                max-width: 100%;
+                height: auto !important;
+            }
+        }
+    }
+}
+
+
+.beitrag-page-placeholder{
+
+    margin: 10rem auto;
+    display: flex;
+    justify-content: space-between;
+    width: 900px;
+
+    .beitrag-content-placeholder{
+        width: 100%;
+
+        .placeholder{
+            display: block;
+            border-radius: 4px;
+            animation: placeholder 2s linear infinite;
+        }
+
+        .heading{
+            margin-bottom: 30px;
+            height: 45px;
+            width: 70%;
+            background-color: var(--primary);
+            margin-bottom: 16px;
+        }
+
+        .date{
+            margin-bottom: 30px;
+            height: 19px;
+            width: 20%;
+            background-color: var(--primary);
+            margin-bottom: 72px;
+        }
+
+        .paragraph{
+            height: 19px;
+            width: 100%;
+            margin-bottom: 8px;
+
+            background-color: var(--dark);
+        }
+
+        .gap{
+            display: block;
+            height: 48px;
+        }
+    }
+
+}
+
+@keyframes placeholder {
+    0%{
+        opacity: .7;
+    }
+    50%{
+        opacity: .4;
+    }
+    100%{
+        opacity: .7;
+    }
+}
+
+
+@media screen and (max-width: 390px) {
+    .beitrag-page{
+        margin: 7rem auto;
+    }
+
+    .beitrag-page-placeholder{
+        margin: 7rem auto;
+        padding: 0 1rem;
+        width: 100vw;
+
+        .beitrag-content-placeholder{
+            width: 100%;
+
+            .placeholder{
+                display: block;
+                border-radius: 4px;
+                animation: placeholder 2s linear infinite;
+            }
+
+            .heading{
+                margin-bottom: 30px;
+                height: 45px;
+                width: 70%;
+                background-color: var(--primary);
+                margin-bottom: 16px;
+            }
+
+            .date{
+                margin-bottom: 30px;
+                height: 19px;
+                width: 20%;
+                background-color: var(--primary);
+                margin-bottom: 72px;
+            }
+
+            .paragraph{
+                height: 19px;
+                width: 100%;
+                margin-bottom: 8px;
+
+                background-color: var(--dark);
+            }
+
+            .gap{
+                display: block;
+                height: 48px;
+            }
+        }
+    }
+}

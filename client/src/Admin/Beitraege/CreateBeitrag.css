@@ -1,0 +1,90 @@
+.create-beitrag {
+  padding: 10rem 5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4rem;
+
+  .head {
+    display: flex;
+    gap: 2rem;
+    align-items: center;
+
+    button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
+      padding-top: 1px;
+      padding-bottom: 6px;
+
+      border-radius: 50%;
+      font-size: 1.8rem;
+      cursor: pointer;
+      border: none;
+      background-color: var(--primary);
+      color: var(--light);
+
+      margin-bottom: 8px;
+
+      &:hover {
+        background-color: var(--primary-light);
+      }
+    }
+
+    h2 {
+      color: var(--primary);
+      font-size: 2.5rem;
+    }
+
+    p {
+      color: red;
+      margin-top: 1rem;
+    }
+  }
+
+  .form{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8rem;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+
+    input {
+      width: 500px;
+      height: 60px;
+      border: 2px solid var(--primary);
+      border-radius: 2rem;
+      padding: 1rem;
+      font-size: 1.3rem;
+      outline: none;
+      transition: 0.2s;
+
+      &:focus {
+        border-color: var(--special);
+      }
+    }
+
+    .submit {
+      width: 500px;
+      height: 60px;
+      flex-shrink: 0;
+      border-radius: 2rem;
+      font-size: 1.3rem;
+      color: var(--light);
+      background-color: var(--primary);
+      border: none;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        background-color: var(--primary-light);
+      }
+    }
+  }
+}
