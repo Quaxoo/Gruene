@@ -35,7 +35,9 @@
     ],
     "puppeteerArgs": [
       "--no-sandbox"
-    ]
+    ],
+    "include": ["/"],
+    "puppeteerArgs": ["--no-sandbox"]
   },
   "eslintConfig": {
     "extends": [

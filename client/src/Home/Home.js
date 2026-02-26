@@ -73,7 +73,7 @@ const Home = () => {
 
                 </div>
 
-                {/* Test */}
+                
                 <div className='promise gruene-font'>
 
                     <h4>Meine Ziele</h4>
@@ -110,7 +110,6 @@ const Home = () => {
                     <TermineList max={3}/>
                     <Link className='all' to="/termine">Alle Termine</Link>
                 </div>
-
 
                 <div className='instagram'>
 
